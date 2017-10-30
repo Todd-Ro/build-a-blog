@@ -2,6 +2,18 @@
 
 {% block content %}
     <h1>Blog</h1>
+    <h1>Submit a new post here!</h1>
+    <form method='post' action="/newpost" enctype="multipart/form-data">
+        <label>
+            New Blog Post Heading:
+            <input type="text" name='post_heading' value="{{post_heading}}" />
+        </label>
+        <label>
+            New Blog Post:
+            <input type="text" name='blog_post' value="{{new_post}}"/>
+        </label>
+        <input type="submit" value='Add Blog Post' />
+    </form>
 
     <hr />
 
@@ -25,5 +37,13 @@
     {% endif %}
 
     <hr />
+
+    <h2>Archived</h2>
+
+    <ul> 
+        {% for post in archived_posts %}
+        <li>{{post.name}}</li>
+        {% endfor %}
+    </ul>
 
 {% endblock %}
